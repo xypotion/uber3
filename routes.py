@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, flash
 from forms import ContactForm
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -6,7 +7,9 @@ app = Flask(__name__)
 
 app.secret_key = 'ancestral recall'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+
 db = SQLAlchemy(app)
 
 @app.route('/')
