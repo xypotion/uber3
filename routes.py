@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, flash
 from forms import ContactForm
+from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 app.secret_key = 'ancestral recall'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
